@@ -59,6 +59,7 @@ libgerbv_la_SOURCES= \
 
 if DXF
 libgerbv_la_SOURCES += export-dxf.cpp
+DEFS += -DENABLE_DXF
 endif
 
 # libgerbv shared library version.  A fairly strict rule should

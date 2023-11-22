@@ -70,7 +70,12 @@
 #define NUMBER_OF_DEFAULT_COLORS          18
 #define NUMBER_OF_DEFAULT_TRANSFORMATIONS 20
 
-weak gboolean gerbv_export_dxf_file_from_image(...) {}
+#ifndef ENABLE_DXF
+static gboolean gerbv_export_dxf_file_from_image(const gchar* file_name, gerbv_image_t* input_img, gerbv_user_transformation_t* trans) {
+  GERB_FATAL_ERROR("DXF is not enabled. Reconfigure with the --enable-dxf flag and recompile.");
+  return FALSE;
+}
+#endif
 
 static void gerbv_print_help(void);
 
